@@ -1,7 +1,10 @@
 
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MarketplaceItemType } from '../../types/marketplace.type';
+import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,31 +14,32 @@ import { MarketplaceItemType } from '../../types/marketplace.type';
   templateUrl: './marketplace-item-list.component.html',
   styleUrl: './marketplace-item-list.component.scss'
 })
-export class MarketplaceItemListComponent {
-  public marketplaceItems: MarketplaceItemType[] = [
-    {
-      id: 1,
-      title: 'ADIDAS NMD',
-      category: 'HOMME',
-      image: 'https://via.placeholder.com/500',
-      description: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
-      price: 50.00
-    },
-    {
-      id: 2,
-      title: 'LEBRON MAX AIR',
-      category: 'KIDS',
-      image: 'https://via.placeholder.com/500',
-      description: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
-      price: 55.00
-    },
-    {
-      id: 3,
-      title: 'PUMA SIT',
-      category: 'ADULT',
-      image: 'https://via.placeholder.com/500',
-      description: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
-      price: 45.00
-    }
-  ];
+export class MarketplaceItemListComponent implements OnInit, OnDestroy {
+  productsSub!: Subscription;
+  marketplaceItems: MarketplaceItemType[] = [];
+
+  constructor(
+    public productsService: ProductService,
+    public cartService: CartService,
+  ) { }
+
+  ngOnInit(): void {
+    this.productsSub = this.productsService.getProducts().subscribe(products => {
+      this.marketplaceItems = products;
+    });
+  }
+
+  addToCart = (item: MarketplaceItemType) => {
+    this.productsService.markProductAsSelected(item);
+    this.cartService.addItem(item);
+  }
+
+  removeFromCart = (item: MarketplaceItemType) => {
+    this.productsService.markProductAsUnselected(item);
+    this.cartService.removeItem(item);
+  }
+
+  ngOnDestroy(): void {
+    this.productsSub.unsubscribe();
+  }
 }

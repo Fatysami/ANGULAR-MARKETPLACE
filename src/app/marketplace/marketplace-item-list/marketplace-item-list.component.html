@@ -10,6 +10,10 @@
       <div class="description">
         <p>{{ item.description }}</p>
       </div>
+      <div class="cart">
+        <button class="add_to_cart" *ngIf="!item.isSelected" (click)="addToCart(item)">Add to cart</button>
+        <button class="remove_from_cart" *ngIf="item.isSelected" (click)="removeFromCart(item)">Remove from cart</button>
+      </div>
     </div>
   </div>
 </div>

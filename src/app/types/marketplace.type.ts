@@ -5,4 +5,5 @@ export type MarketplaceItemType = {
     image: string;
     description: string;
     price: number;
+    isSelected: boolean
   }
