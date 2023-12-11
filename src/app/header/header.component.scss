@@ -45,7 +45,21 @@ a{
     display: inline-block;
     margin: 1.4em 1em 1em 1em;
 }
-
+.site-navigation a {
+    color: #000; 
+    text-decoration: none; 
+    background-color: transparent; 
+    transition: background-color 0.3s, transform 0.3s; 
+    display: inline-block; 
+    margin: 0 5px; 
+    padding: 5px 10px;
+  }
+  
+  .site-navigation a:hover {
+    background-color: #e8f0fe; /* Couleur de fond au survol */
+    transform: translateY(-3px); /* Déplace l'élément vers le haut */
+    box-shadow: 0 4px 6px rgba(32, 33, 36, 0.28); /* Ombre portée pour l'effet de profondeur */
+  }
 span.badge {
     padding: 2px 6px;
     border-radius: 50%;
@@ -61,3 +75,94 @@ span.badge {
     background: #e32525;
     color: white;
   }
+
+  .cart-modal {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px; 
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    z-index: 100;
+  }
+  
+  .cart-modal-content {
+    padding: 20px;
+  }
+  
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 1.5em;
+  }
+  
+  /* Styles pour les éléments à l'intérieur de la modal */
+  .cart-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  /* Style pour le bouton 'Supprimer' */
+.btn-style-rouge {
+    background-color: #e32525; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 4px 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-style-rouge:hover {
+    background-color: #c71f1f; 
+  }
+  
+  /* Style pour le bouton 'Ajouter' */
+  .btn-style-vert {
+    background-color: #2aa200; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 4px 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-style-vert:hover {
+    background-color: #238900; 
+  }
+
+  /* Style pour le bouton 'Retour au catalogue' */
+  .btn-style-gris {
+    background-color: gray; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 4px 2px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-style-gris:hover {
+    background-color: #696969;
+  }
+  
+  .empty-cart {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .back-to-catalog {
+    text-align: center;
+    padding: 10px 20px;
+  }
+  
+ 

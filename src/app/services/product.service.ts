@@ -16,7 +16,7 @@ private _products:MarketplaceItemType[]=[
     id: 1,
     title: 'ADIDAS NMD',
     category: 'HOMME',
-    image: 'https://via.placeholder.com/500',
+    image: 'assets/images/Chaussure1.jpg',
     description: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
     price: 50.00,
     isSelected: false
@@ -25,19 +25,19 @@ private _products:MarketplaceItemType[]=[
     id: 2,
     title: 'LEBRON XI AIR',
     category: 'KIDS',
-    image: 'https://via.placeholder.com/500',
+    image: 'assets/images/Chaussure2.jpg',
     description: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
     price: 55.00,
-    isSelected: true
+    isSelected: false
   },
   {
     id: 3,
     title: 'NIKE AIR',
     category: 'HOMME',
-    image: 'https://via.placeholder.com/500',
+    image: 'assets/images/Chaussure3.jpeg',
     description: 'Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.',
     price: 49.99,
-    isSelected: true
+    isSelected: false
   }
 
 ];

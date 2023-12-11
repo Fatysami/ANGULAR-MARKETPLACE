@@ -11,6 +11,9 @@ import { Subscription } from 'rxjs';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+
+  isCartOpen = false;
+
   cartItems: { item: MarketplaceItemType, quantity: number }[] = [];
   cartItemsSub!: Subscription;
 
@@ -26,5 +29,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.cartItemsSub.unsubscribe();
+  }
+
+  toggleCart() {
+    this.isCartOpen = !this.isCartOpen;
+  }
+
+  RemoveFromCart(item: MarketplaceItemType) {
+    this.cartService.addItem(item,-1); // Décrémente la quantité de 1
+  }
+  
+  AddToCart(item: MarketplaceItemType) {
+    this.cartService.addItem(item, 1); // Incrémente la quantité de 1
   }
 }

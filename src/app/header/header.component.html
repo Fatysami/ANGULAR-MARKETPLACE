@@ -8,10 +8,30 @@
         <li><a href="#">Catégories</a></li>
         <li><a href="#">Nouveautés</a></li>
         <li><a href="#">Contactez-nous</a></li>
-        <li><a href="#">
+        <li><a href="#" (click)="toggleCart()">
           Panier <span class="badge" [ngClass]="{'badge-green': cartItems.length > 0, 'badge-yellow': cartItems.length === 0}">{{ cartItems.length }}</span>
         </a></li>
       </ul>
     </nav>
+    <div class="cart-modal" *ngIf="isCartOpen">
+      <div class="cart-modal-content">
+        <span class="close" (click)="toggleCart()">&times;</span>
+        <h2>Panier</h2>
+        <div *ngFor="let cartItem of cartService.getCartItems() | async">
+          <p>{{ cartItem.item.title }} - Quantité : {{ cartItem.quantity }}</p> 
+          <button class="btn-style-rouge" (click)="RemoveFromCart(cartItem.item)">Supprimer</button>
+          <button class="btn-style-vert" (click)="AddToCart(cartItem.item)">Ajouter</button>
+        </div>
+      </div>
+      <!-- Afficher un libellé si panier vide -->
+<div *ngIf="cartItems.length === 0" class="empty-cart">
+  <p>Le panier est vide.</p>
+</div>
+
+<!-- Ajoutez le bouton 'Retour au catalogue' -->
+<div *ngIf="cartItems.length === 0" class="back-to-catalog">
+  <button class="btn-style-gris" (click)="toggleCart()">Retour au catalogue</button>
+</div>
+    </div>
   </header>
   
